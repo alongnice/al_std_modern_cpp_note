@@ -1,0 +1,40 @@
+2.1 章节讲述常量
+
+# 推荐使用nullptr
+
+## 引入问题：
+传统意义 NULL会被编译器理解为 0 或者 ((void)*0)
+
+c++不允许直接将 void * 进行隐式转换成其他的类型
+如果尝试使用c语言中的语法
+
+```c++
+char *ch = NULL;
+
+void foo(char *);
+void foo(int);
+```
+那么调用的
+foo(NULL);  会被改为  foo(int)  代码便违反了直觉
+
+## 解决方案
+为了解决上述问题提供了
+nullptr 的关键字(属于对NULL功能的完善)
+专门用来区分 空指针，0
+nullptr 的类型也被定义为 nullptr_t 支持隐式转换为任何指针或者成员指针，进行比较
+
+当前目录 nullptr.cc 中进行了一个 NULL 与以上这些值的比较过程
+得到（环境为g++）
+NULL 不同于 0或者nullptr
+
+## 结论请区别使用 NULL 和 nullptr
+
+## 备注
+nullptr.cc 中使用的
+decltype：作用是类型推导
+std::is_same: 作用是类型比较是否相同
+属于现代c++ 语法
+
+# constexpr
+c语言与c++ 中都允许 常量的直接使用
+1+2 或者 3*4 这种操作可以直接且没有副作用的植入程序
