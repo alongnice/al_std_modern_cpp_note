@@ -1,9 +1,0 @@
-#include "foo.h"
-#include <iostream>
-#include <functional>
-
-int main(){
-
-
-	return 0;
-}
